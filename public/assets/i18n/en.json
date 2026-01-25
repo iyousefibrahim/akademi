@@ -1,0 +1,6 @@
+{
+  "app": {
+    "hello": "hello world from en.json",
+    "title": "Translation Demo"
+  }
+}
