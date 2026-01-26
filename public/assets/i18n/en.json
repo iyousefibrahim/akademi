@@ -1,6 +1,27 @@
 {
-  "app": {
-    "hello": "hello world from en.json",
-    "title": "Translation Demo"
+  "auth": {
+    "teacher_signup": {
+      "title": "Create Teacher Account",
+      "subtitle": "Join Akademi and start managing your classroom",
+      "full_name": "Full Name",
+      "full_name_required": "Full name is required",
+      "email": "Email Address",
+      "email_required": "Email is required",
+      "email_invalid": "Please enter a valid email address",
+      "password": "Password",
+      "password_required": "Password is required",
+      "password_min_length": "Password must be at least 6 characters",
+      "creating_account": "Creating Account...",
+      "create_account": "Create Account",
+      "or": "OR",
+      "google_signup": "Google Sign Up",
+      "already_have_account": "Already have an account?",
+      "sign_in": "Sign in",
+      "upload_avatar": "Upload Profile Picture"
+    },
+    "footer": {
+      "copyright": "Akademi. All rights reserved.",
+      "language": "Language"
+    }
   }
 }

@@ -1,6 +1,27 @@
 {
-  "app": {
-    "hello": "مرحبا بالعالم من ar.json",
-    "title": "تطبيق الترجمة"
+  "auth": {
+    "teacher_signup": {
+      "title": "أنشئ حساب معلم",
+      "subtitle": "انضم إلى أكاديمي وابدأ في إدارة فصلك الدراسي",
+      "full_name": "الاسم الكامل",
+      "full_name_required": "الاسم الكامل مطلوب",
+      "email": "البريد الإلكتروني",
+      "email_required": "البريد الإلكتروني مطلوب",
+      "email_invalid": "يرجى إدخال عنوان بريد إلكتروني صالح",
+      "password": "كلمة المرور",
+      "password_required": "كلمة المرور مطلوبة",
+      "password_min_length": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",
+      "creating_account": "جاري إنشاء الحساب...",
+      "create_account": "إنشاء حساب",
+      "or": "أو",
+      "google_signup": "التسجيل باستخدام Google",
+      "already_have_account": "هل لديك حساب بالفعل؟",
+      "sign_in": "تسجيل الدخول",
+      "upload_avatar": "تحميل صورة الملف الشخصي"
+    },
+    "footer": {
+      "copyright": "أكاديمي. جميع الحقوق محفوظة.",
+      "language": "اللغة"
+    }
   }
 }

@@ -1,7 +1,7 @@
 <div class="min-h-screen flex items-center justify-center bg-surface-50 p-4">
   <div class="w-[90%] lg:w-[60%] xl:w-[40%]">
     <!-- Signup Card -->
-    <div class="rounded-xl shadow-2xl p-8 space-y-6 animate-fade-in">
+    <div class="rounded-xl shadow p-8 space-y-6 animate-fade-in">
       <!-- Header -->
       <div class="text-center space-y-2">
         <div
@@ -21,12 +21,14 @@
             />
           </svg>
         </div>
-        <h1 class="text-3xl font-bold text-gray-900">Create Teacher Account</h1>
-        <p class="text-gray-600">Join Akademi and start managing your classroom</p>
+        <h1 class="text-3xl font-bold text-gray-900">
+          {{ 'auth.teacher_signup.title' | translate }}
+        </h1>
+        <p class="text-gray-600">{{ 'auth.teacher_signup.subtitle' | translate }}</p>
       </div>
 
       <!-- Form -->
-      <form [formGroup]="teacherSignupForm" (ngSubmit)="onSubmit()" class="space-y-5">
+      <form [formGroup]="teacherSignupForm" (ngSubmit)="onSubmit()" class="space-y-3">
         <!-- Avatar Upload -->
         <!-- <div class="flex flex-col items-center justify-center space-y-3 pb-4">
           <div
@@ -64,7 +66,7 @@
               styleClass="w-full h-full"
             />
           </div>
-          <span class="text-xs text-gray-500 font-medium">Upload Profile Picture</span>
+          <span class="text-xs text-gray-500 font-medium">{{ 'auth.teacher_signup.upload_avatar' | translate }}</span>
         </div> -->
 
         <!-- Full Name Field -->
@@ -82,7 +84,7 @@
                   teacherSignupForm.get('full_name')?.touched,
               }"
             />
-            <label for="full_name">Full Name</label>
+            <label for="full_name">{{ 'auth.teacher_signup.full_name' | translate }}</label>
           </p-floatlabel>
           <div class="min-h-5">
             @if (
@@ -91,7 +93,7 @@
             ) {
               <small class="text-red-500 text-xs block">
                 @if (teacherSignupForm.get('full_name')?.errors?.['required']) {
-                  Full name is required
+                  {{ 'auth.teacher_signup.full_name_required' | translate }}
                 }
               </small>
             }
@@ -112,7 +114,7 @@
                   teacherSignupForm.get('email')?.touched,
               }"
             />
-            <label for="email">Email Address</label>
+            <label for="email">{{ 'auth.teacher_signup.email' | translate }}</label>
           </p-floatlabel>
           <div class="min-h-5">
             @if (
@@ -120,10 +122,10 @@
             ) {
               <small class="text-red-500 text-xs block">
                 @if (teacherSignupForm.get('email')?.errors?.['required']) {
-                  Email is required
+                  {{ 'auth.teacher_signup.email_required' | translate }}
                 }
                 @if (teacherSignupForm.get('email')?.errors?.['email']) {
-                  Please enter a valid email address
+                  {{ 'auth.teacher_signup.email_invalid' | translate }}
                 }
               </small>
             }
@@ -147,7 +149,7 @@
                   teacherSignupForm.get('password')?.touched,
               }"
             />
-            <label for="password">Password</label>
+            <label for="password">{{ 'auth.teacher_signup.password' | translate }}</label>
           </p-floatlabel>
           <div class="min-h-5">
             @if (
@@ -156,10 +158,10 @@
             ) {
               <small class="text-red-500 text-xs block">
                 @if (teacherSignupForm.get('password')?.errors?.['required']) {
-                  Password is required
+                  {{ 'auth.teacher_signup.password_required' | translate }}
                 }
                 @if (teacherSignupForm.get('password')?.errors?.['minlength']) {
-                  Password must be at least 6 characters
+                  {{ 'auth.teacher_signup.password_min_length' | translate }}
                 }
               </small>
             }
@@ -170,27 +172,31 @@
         <button
           pButton
           type="submit"
-          [label]="isLoading() ? 'Creating Account...' : 'Create Account'"
+          [label]="
+            isLoading()
+              ? ('auth.teacher_signup.creating_account' | translate)
+              : ('auth.teacher_signup.create_account' | translate)
+          "
           [disabled]="teacherSignupForm.invalid || isLoading()"
           class="w-full"
           [loading]="isLoading()"
         ></button>
 
-        <p-divider align="center" type="solid">
-          <p>OR</p>
+        <!-- <p-divider align="center" type="solid">
+          <p>{{ 'auth.teacher_signup.or' | translate }}</p>
         </p-divider>
-        <p-button label="Google Sign Up"></p-button>
+        <p-button (click)="onGoogleSignup()" [label]="'auth.teacher_signup.google_signup' | translate"></p-button> -->
       </form>
 
       <!-- Footer -->
       <div class="pt-4 border-t border-gray-200">
         <p class="text-center text-sm text-gray-600">
-          Already have an account?
+          {{ 'auth.teacher_signup.already_have_account' | translate }}
           <a
-            href="/signin"
+            routerLink="/signin"
             class="font-semibold text-purple-600 hover:text-purple-700 transition-colors"
           >
-            Sign in
+            {{ 'auth.teacher_signup.sign_in' | translate }}
           </a>
         </p>
       </div>

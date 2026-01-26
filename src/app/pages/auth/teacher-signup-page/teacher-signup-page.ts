@@ -11,6 +11,8 @@ import { DividerModule } from 'primeng/divider';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { FileUploadModule } from 'primeng/fileupload';
+import { TranslateModule } from '@ngx-translate/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-teacher-signup-page',
@@ -25,6 +27,8 @@ import { FileUploadModule } from 'primeng/fileupload';
     DividerModule,
     ToastModule,
     FileUploadModule,
+    TranslateModule,
+    RouterLink,
   ],
   providers: [MessageService],
   templateUrl: './teacher-signup-page.html',
@@ -73,4 +77,10 @@ export class TeacherSignupPage {
       }
     }
   };
+
+  // public readonly onGoogleSignup = async () => {
+  //   this.isLoading.set(true);
+  //   const { data, error } = await this._authService.signInWithGoogle();
+  //   this.isLoading.set(false);
+  // };
 }
