@@ -27,6 +27,76 @@
 
       <!-- Form -->
       <form [formGroup]="teacherSignupForm" (ngSubmit)="onSubmit()" class="space-y-5">
+        <!-- Avatar Upload -->
+        <!-- <div class="flex flex-col items-center justify-center space-y-3 pb-4">
+          <div
+            class="relative w-24 h-24 rounded-full border-2 border-dashed border-gray-300 flex items-center justify-center overflow-hidden bg-gray-50 hover:border-purple-400 transition-colors group cursor-pointer"
+          >
+            @if (selectedFile()) {
+              <img
+                [src]="selectedFile() ? selectedFile() : ''"
+                class="w-full h-full object-cover"
+                alt="Avatar Preview"
+              />
+            } @else {
+              <svg
+                class="w-10 h-10 text-gray-400 group-hover:text-purple-500"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 4v16m8-8H4"
+                />
+              </svg>
+            }
+            <p-fileUpload
+              mode="basic"
+              chooseIcon="pi pi-plus"
+              accept="image/*"
+              maxFileSize="2000000"
+              (onSelect)="onFileSelect($event)"
+              [auto]="true"
+              class="absolute inset-0 opacity-0 cursor-pointer"
+              styleClass="w-full h-full"
+            />
+          </div>
+          <span class="text-xs text-gray-500 font-medium">Upload Profile Picture</span>
+        </div> -->
+
+        <!-- Full Name Field -->
+        <div class="space-y-2">
+          <p-floatlabel>
+            <input
+              id="full_name"
+              pInputText
+              formControlName="full_name"
+              autocomplete="full_name"
+              class="w-full"
+              [class]="{
+                'border-red-500':
+                  teacherSignupForm.get('full_name')?.invalid &&
+                  teacherSignupForm.get('full_name')?.touched,
+              }"
+            />
+            <label for="full_name">Full Name</label>
+          </p-floatlabel>
+          <div class="min-h-5">
+            @if (
+              teacherSignupForm.get('full_name')?.invalid &&
+              teacherSignupForm.get('full_name')?.touched
+            ) {
+              <small class="text-red-500 text-xs block">
+                @if (teacherSignupForm.get('full_name')?.errors?.['required']) {
+                  Full name is required
+                }
+              </small>
+            }
+          </div>
+        </div>
         <!-- Email Field -->
         <div class="space-y-2">
           <p-floatlabel>

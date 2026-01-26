@@ -10,6 +10,7 @@ import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { FileUploadModule } from 'primeng/fileupload';
 
 @Component({
   selector: 'app-teacher-signup-page',
@@ -23,6 +24,7 @@ import { MessageService } from 'primeng/api';
     ButtonModule,
     DividerModule,
     ToastModule,
+    FileUploadModule,
   ],
   providers: [MessageService],
   templateUrl: './teacher-signup-page.html',
@@ -37,35 +39,38 @@ export class TeacherSignupPage {
   public readonly teacherSignupForm: FormGroup = this._formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]],
+    full_name: ['', [Validators.required]],
   });
 
-  public readonly onSubmit = () => {
+  public readonly onSubmit = async () => {
     if (this.teacherSignupForm.valid) {
       this.isLoading.set(true);
-      console.log(this.teacherSignupForm.value);
+      console.log('Form Data', this.teacherSignupForm.value);
 
-      this._authService
-        .signUp(this.teacherSignupForm.value.email!, this.teacherSignupForm.value.password!)
-        .subscribe({
-          next: (res) => {
-            console.log(res);
-            this.isLoading.set(false);
-            this._messageService.add({
-              severity: 'success',
-              summary: 'Success',
-              detail: 'Teacher created successfully',
-              life: 3000,
-            });
-            if (res.error) {
-              this._messageService.add({
-                severity: 'error',
-                summary: 'Error',
-                detail: res.error.message || 'Something went wrong',
-                life: 3000,
-              });
-            }
-          },
+      const { data, error } = await this._authService.teacherSignUp(
+        this.teacherSignupForm.value.email!,
+        this.teacherSignupForm.value.password!,
+        this.teacherSignupForm.value.full_name!,
+      );
+
+      console.log('Response Data', data);
+      this.isLoading.set(false);
+      if (data?.teacher) {
+        this._messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Teacher created successfully',
+          life: 3000,
         });
+      }
+      if (error) {
+        this._messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: error.message || 'Something went wrong',
+          life: 3000,
+        });
+      }
     }
   };
 }
