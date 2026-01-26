@@ -1,0 +1,131 @@
+<div class="min-h-screen flex items-center justify-center bg-surface-50 p-4">
+  <div class="w-[90%] lg:w-[60%] xl:w-[40%]">
+    <!-- Signin Card -->
+    <div class="rounded-xl shadow p-8 space-y-6 animate-fade-in">
+      <!-- Header -->
+      <div class="text-center space-y-2">
+        <div
+          class="inline-flex items-center justify-center w-16 h-16 bg-purple-100 rounded-full mb-2"
+        >
+          <svg
+            class="w-8 h-8 text-purple-600"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
+            />
+          </svg>
+        </div>
+        <h1 class="text-3xl font-bold text-gray-900">
+          {{ 'auth.signin.title' | translate }}
+        </h1>
+        <p class="text-gray-600">{{ 'auth.signin.subtitle' | translate }}</p>
+      </div>
+
+      <!-- Form -->
+      <form [formGroup]="signinForm" (ngSubmit)="onSubmit()" class="space-y-3">
+        <!-- Email Field -->
+        <div class="space-y-2">
+          <p-floatlabel>
+            <input
+              id="email"
+              pInputText
+              formControlName="email"
+              autocomplete="email"
+              class="w-full"
+              [class]="{
+                'border-red-500':
+                  signinForm.get('email')?.invalid && signinForm.get('email')?.touched,
+              }"
+            />
+            <label for="email">{{ 'auth.signin.email' | translate }}</label>
+          </p-floatlabel>
+          <div class="min-h-5">
+            @if (signinForm.get('email')?.invalid && signinForm.get('email')?.touched) {
+              <small class="text-red-500 text-xs block">
+                @if (signinForm.get('email')?.errors?.['required']) {
+                  {{ 'auth.signin.email_required' | translate }}
+                }
+                @if (signinForm.get('email')?.errors?.['email']) {
+                  {{ 'auth.signin.email_invalid' | translate }}
+                }
+              </small>
+            }
+          </div>
+        </div>
+
+        <!-- Password Field -->
+        <div class="space-y-2">
+          <p-floatlabel>
+            <p-password
+              id="password"
+              formControlName="password"
+              [toggleMask]="true"
+              [feedback]="false"
+              autocomplete="current-password"
+              class="w-full"
+              [inputStyle]="{ width: '100%' }"
+              [class]="{
+                'border-red-500':
+                  signinForm.get('password')?.invalid && signinForm.get('password')?.touched,
+              }"
+            />
+            <label for="password">{{ 'auth.signin.password' | translate }}</label>
+          </p-floatlabel>
+          <div class="min-h-5">
+            @if (signinForm.get('password')?.invalid && signinForm.get('password')?.touched) {
+              <small class="text-red-500 text-xs block">
+                @if (signinForm.get('password')?.errors?.['required']) {
+                  {{ 'auth.signin.password_required' | translate }}
+                }
+              </small>
+            }
+          </div>
+        </div>
+
+        <!-- Forgot Password Link -->
+        <div class="text-right">
+          <a
+            routerLink="/forgot-password"
+            class="text-sm font-medium text-purple-600 hover:text-purple-700 transition-colors"
+          >
+            {{ 'auth.signin.forgot_password' | translate }}
+          </a>
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          pButton
+          type="submit"
+          [label]="
+            isLoading()
+              ? ('auth.signin.signing_in' | translate)
+              : ('auth.signin.sign_in' | translate)
+          "
+          [disabled]="signinForm.invalid || isLoading()"
+          class="w-full"
+          [loading]="isLoading()"
+        ></button>
+      </form>
+
+      <!-- Footer -->
+      <div class="pt-4 border-t border-gray-200">
+        <p class="text-center text-sm text-gray-600">
+          {{ 'auth.signin.no_account' | translate }}
+          <a
+            routerLink="/teacher-signup"
+            class="font-semibold text-purple-600 hover:text-purple-700 transition-colors"
+          >
+            {{ 'auth.signin.sign_up' | translate }}
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<p-toast />

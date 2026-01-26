@@ -19,6 +19,20 @@
       "sign_in": "Sign in",
       "upload_avatar": "Upload Profile Picture"
     },
+    "signin": {
+      "title": "Welcome Back",
+      "subtitle": "Sign in to continue to Akademi",
+      "email": "Email Address",
+      "email_required": "Email is required",
+      "email_invalid": "Please enter a valid email address",
+      "password": "Password",
+      "password_required": "Password is required",
+      "forgot_password": "Forgot password?",
+      "signing_in": "Signing in...",
+      "sign_in": "Sign In",
+      "no_account": "Don't have an account?",
+      "sign_up": "Sign up"
+    },
     "footer": {
       "copyright": "Akademi. All rights reserved.",
       "language": "Language"
