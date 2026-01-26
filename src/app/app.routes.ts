@@ -46,8 +46,15 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         loadComponent: () =>
-          import('./pages/teacher/teacher-dashboard/teacher-dashboard').then(
-            (p) => p.TeacherDashboard,
+          import('./pages/teacher/teacher-dashboard-page/teacher-dashboard-page').then(
+            (p) => p.TeacherDashboardPage,
+          ),
+      },
+      {
+        path: 'students',
+        loadComponent: () =>
+          import('./pages/teacher/teacher-students-page/teacher-students-page').then(
+            (p) => p.TeacherStudentsPage,
           ),
       },
     ],

@@ -11,8 +11,8 @@ import {
   UserResponse,
 } from '@supabase/supabase-js';
 import { supabase } from '../../../utils/supabaseClient';
-import { type IProfile } from '../interfaces/iprofile';
-import { ITeacher } from '../interfaces/iteacher';
+import { type IProfile } from '../../../core/interfaces/iprofile';
+import { ITeacher } from '../../../core/interfaces/iteacher';
 
 @Injectable({
   providedIn: 'root',

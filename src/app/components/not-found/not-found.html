@@ -1,1 +1,30 @@
-<p>not-found works!</p>
+<div
+  class="min-h-screen flex items-center justify-center bg-surface-950 overflow-hidden relative p-8"
+>
+  <div
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary-500/20 rounded-full blur-[120px] pointer-events-none"
+  ></div>
+
+  <div class="z-10 flex flex-col items-center justify-center text-center max-w-lg mx-auto">
+    <!-- 404 Pill -->
+    <div
+      class="mb-8 rounded-full border border-primary-500/30 bg-primary-500/10 px-4 py-1.5 backdrop-blur-sm shadow-[0_0_15px_rgba(139,92,246,0.15)]"
+    >
+      <span class="text-sm font-semibold tracking-wide text-primary-400">404</span>
+    </div>
+
+    <!-- Heading -->
+    <h1 class="mb-6 text-5xl font-bold tracking-tight text-white md:text-7xl drop-shadow-sm">
+      {{ 'not_found.title' | translate }}
+    </h1>
+
+    <!-- Description -->
+    <p class="mb-10 text-lg text-surface-400 leading-relaxed">
+      {{ 'not_found.description' | translate }}
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-center gap-6">
+      <p-button (onClick)="goBack()" [label]="'not_found.go_back' | translate"></p-button>
+    </div>
+  </div>
+</div>
